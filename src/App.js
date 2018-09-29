@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Movies from './components/movies/Movies';
 import Header from './components/layout/Header';
+import Movies from './components/movies/Movies';
+import MovieDetails from './components/movies/MovieDetails';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -18,6 +19,7 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Movies} />
+                <Route exact path="/movie/:id" component={MovieDetails} />
               </Switch>
             </div>
           </div>
