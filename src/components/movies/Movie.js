@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Movie extends Component {
   render() {
-    const { poster_path, title, release_date, overview } = this.props.movie;
+    const { id, poster_path, title, release_date, overview } = this.props.movie;
 
     return (
       <div className="card h-100">
@@ -16,14 +17,17 @@ class Movie extends Component {
             />
           </div>
           <div className="col-md-7">
-            <div class="card-body">
-              <h5 class="card-title">{title}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{release_date}</h6>
-              <p class="card-text">
+            <div className="card-body">
+              <h5 className="card-title">{title}</h5>
+              <h6 className="card-subtitle mb-2 text-muted">{release_date}</h6>
+              <p className="card-text">
                 {overview.length > 216
                   ? overview.substring(0, 216) + '...'
                   : overview}
               </p>
+            </div>
+            <div className="card-footer bg-white">
+              <Link to={`movie/${id}`}>More Info</Link>
             </div>
           </div>
         </div>

@@ -4,16 +4,20 @@ import { Link } from 'react-router-dom';
 export default class Header extends Component {
   render() {
     return (
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <div class="navbar-header">
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <div className="navbar-header">
             <Link to="/" className="navbar-brand">
               FavMovie
             </Link>
           </div>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search" />
+          <form className="navbar-form navbar-left" role="search">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+              />
             </div>
           </form>
         </div>
