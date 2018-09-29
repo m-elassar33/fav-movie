@@ -30,7 +30,7 @@ Movies.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  movies: state.movie.movies
+  movies: state.movie.displayedMovies
 });
 
 export default connect(

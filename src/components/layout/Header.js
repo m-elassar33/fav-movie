@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { filterMovies } from '../../actions/movieActions';
 
-export default class Header extends Component {
+class Header extends Component {
+  onInputChange = e => {
+    e.preventDefault();
+    this.props.filterMovies(e.target.value);
+  };
+
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark">
@@ -11,17 +19,25 @@ export default class Header extends Component {
               FavMovie
             </Link>
           </div>
-          <form className="navbar-form navbar-left" role="search">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
-              />
-            </div>
-          </form>
+          <div className="navbar-left">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search"
+              onChange={this.onInputChange}
+            />
+          </div>
         </div>
       </nav>
     );
   }
 }
+
+Header.propTypes = {
+  filterMovies: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { filterMovies }
+)(Header);
