@@ -27,7 +27,7 @@ class Movie extends Component {
               </p>
             </div>
             <div className="card-footer bg-white">
-              <Link to={`movie/${id}`}>More Info</Link>
+              <Link to={`/${id}`}>More Info</Link>
             </div>
           </div>
         </div>
