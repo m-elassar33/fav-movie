@@ -1,4 +1,4 @@
-import { GET_MOVIES, GET_MOVIE } from './types';
+import { GET_MOVIES, GET_MOVIE, FILTER_MOVIES } from './types';
 import axios from 'axios';
 
 export const getMovies = () => async dispatch => {
@@ -18,5 +18,12 @@ export const getMovie = id => async dispatch => {
   dispatch({
     type: GET_MOVIE,
     payload: res.data
+  });
+};
+
+export const filterMovies = term => async dispatch => {
+  dispatch({
+    type: FILTER_MOVIES,
+    payload: term
   });
 };
