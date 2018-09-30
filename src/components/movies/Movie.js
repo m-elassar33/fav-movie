@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { setModal } from '../../actions/movieActions';
+import { withRouter } from 'react-router-dom';
 
 class Movie extends Component {
+  onClick = id => {
+    this.props.setModal(true);
+    this.props.history.push(`/${id}`);
+  };
+
   render() {
     const { id, poster_path, title, release_date, overview } = this.props.movie;
 
     return (
-      <div className="card h-100">
+      <div className="card h-100" onClick={this.onClick.bind(this, id)}>
         <div className="row">
           <div className="col-md-5">
             <img
@@ -27,7 +36,9 @@ class Movie extends Component {
               </p>
             </div>
             <div className="card-footer bg-white">
-              <Link to={`/${id}`}>More Info</Link>
+              <Link onClick={e => e.stopPropagation()} to={`/${id}`}>
+                More Info
+              </Link>
             </div>
           </div>
         </div>
@@ -37,7 +48,14 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
+  setModal: PropTypes.func.isRequired
 };
 
-export default Movie;
+export default compose(
+  withRouter,
+  connect(
+    null,
+    { setModal }
+  )
+)(Movie);
