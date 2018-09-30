@@ -1,9 +1,14 @@
-import { GET_MOVIES, GET_MOVIE, FILTER_MOVIES } from '../actions/types';
+import {
+  GET_MOVIES,
+  GET_MOVIE,
+  FILTER_MOVIES,
+  SET_MODAL
+} from '../actions/types';
 
 const initialState = {
   movies: [],
   displayedMovies: [],
-  movie: {}
+  movie: { modalIsOpen: false }
 };
 
 export default function(state = initialState, action) {
@@ -17,7 +22,7 @@ export default function(state = initialState, action) {
     case GET_MOVIE:
       return {
         ...state,
-        movie: action.payload
+        movie: { ...action.payload, modalIsOpen: state.movie.modalIsOpen }
       };
     case FILTER_MOVIES:
       return {
@@ -25,6 +30,11 @@ export default function(state = initialState, action) {
         displayedMovies: state.movies.filter(movie =>
           movie.title.toLowerCase().includes(action.payload.toLowerCase())
         )
+      };
+    case SET_MODAL:
+      return {
+        ...state,
+        movie: { ...state.movie, modalIsOpen: action.payload }
       };
     default:
       return state;
