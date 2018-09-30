@@ -1,4 +1,4 @@
-import { GET_MOVIES, GET_MOVIE, FILTER_MOVIES } from './types';
+import { GET_MOVIES, GET_MOVIE, FILTER_MOVIES, SET_MODAL } from './types';
 import axios from 'axios';
 
 export const getMovies = () => async dispatch => {
@@ -25,5 +25,12 @@ export const filterMovies = term => async dispatch => {
   dispatch({
     type: FILTER_MOVIES,
     payload: term
+  });
+};
+
+export const setModal = modal => async dispatch => {
+  dispatch({
+    type: SET_MODAL,
+    payload: modal
   });
 };
