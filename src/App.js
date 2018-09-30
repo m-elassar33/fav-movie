@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/layout/Header';
-import Movies from './components/movies/Movies';
-import MovieDetails from './components/movies/MovieDetails';
 
 import { Provider } from 'react-redux';
 import store from './store';
 
 import './App.css';
+
+import asyncComponent from './AsyncComponent';
+
+const Header = asyncComponent(() =>
+  import('./components/layout/Header').then(module => module.default)
+);
+const Movies = asyncComponent(() =>
+  import('./components/movies/Movies').then(module => module.default)
+);
+const MovieDetails = asyncComponent(() =>
+  import('./components/movies/MovieDetails').then(module => module.default)
+);
 
 class App extends Component {
   render() {
