@@ -8,10 +8,6 @@ Modal.setAppElement('#root');
 
 class MovieDetails extends Component {
   state = {
-    poster_path: '',
-    title: '',
-    release_date: '',
-    overview: '',
     modalIsOpen: false
   };
 
@@ -25,18 +21,8 @@ class MovieDetails extends Component {
   };
 
   componentWillReceiveProps(nextProps, nextState) {
-    const {
-      poster_path,
-      title,
-      release_date,
-      overview,
-      modalIsOpen
-    } = nextProps.movie;
+    const { modalIsOpen } = nextProps.movie;
     this.setState({
-      poster_path,
-      title,
-      release_date,
-      overview,
       modalIsOpen
     });
   }
@@ -47,7 +33,14 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { poster_path, title, release_date, overview } = this.props.movie;
+    const {
+      poster_path,
+      title,
+      release_date,
+      overview,
+      runtime,
+      original_language
+    } = this.props.movie;
 
     return (
       <React.Fragment>
@@ -77,25 +70,24 @@ class MovieDetails extends Component {
             </div>
           </div>
         </Modal>
-        <div className="card">
-          <div className="row">
-            <div className="col-md-5">
-              <img
-                className="card-img-top"
-                src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
-                alt={title}
-              />
-            </div>
-            <div className="col-md-7">
-              <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">
-                  {release_date}
-                </h6>
-                <p className="card-text">{overview}</p>
-              </div>
-            </div>
+        <div className="row">
+          <h4>{`${title} (${new Date(release_date).getFullYear()})`}</h4>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <img
+              className="img-fluid"
+              src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
+              alt={title}
+            />
           </div>
+          <div className="col-md-8">
+            <p>Runtime: {runtime} minutes</p>
+            <p>Language: {original_language}</p>
+          </div>
+        </div>
+        <div className="row">
+          <p>{overview}</p>
         </div>
       </React.Fragment>
     );

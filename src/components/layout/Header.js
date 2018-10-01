@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 import { filterMovies } from '../../actions/movieActions';
 
 class Header extends Component {
+  state = {
+    term: ''
+  };
+
   onInputChange = e => {
     e.preventDefault();
+    this.setState({ term: e.target.value });
     this.props.filterMovies(e.target.value);
   };
 
@@ -22,8 +27,9 @@ class Header extends Component {
           <div className="navbar-left">
             <input
               type="text"
-              className="form-control"
-              placeholder="Search"
+              className="form-control font-awesome"
+              placeholder="&#xf002; Search for a movie, tv show, person..."
+              value={this.state.term}
               onChange={this.onInputChange}
             />
           </div>

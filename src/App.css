@@ -1,0 +1,54 @@
+.navbar-dark .navbar-brand {
+  color: #0b0;
+}
+
+.navbar-dark .navbar-brand:hover {
+  color: #0b0;
+}
+
+.movie-list {
+  margin-top: 30px;
+}
+
+.movie {
+  margin: 15px 0;
+}
+
+.navbar-left {
+  width: 30%;
+}
+
+.card-header {
+  border: 0;
+}
+
+.card-title {
+  font-size: 0.9em;
+}
+
+.card-subtitle {
+  font-size: 0.8em;
+}
+
+.card-text {
+  font-size: 0.6em;
+}
+
+.card-footer a {
+  color: black;
+  font-size: 0.7em;
+}
+
+.font-awesome {
+  font-family: 'Helvetica', 'Font Awesome 5 Free', sans-serif;
+  font-weight: 600;
+}
+
+#root {
+  background-color: #eee;
+}
+
+.img-fluid {
+  width: 200px;
+  height: 250px;
+}

@@ -25,7 +25,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header />
-            <div className="container">
+            <div className="container movie-list">
               <Switch>
                 <Route exact path="/" component={Movies} />
                 <Route exact path="/:id" component={MovieDetails} />

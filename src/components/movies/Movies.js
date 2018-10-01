@@ -15,9 +15,7 @@ class Movies extends Component {
     return (
       <div className="row">
         {movies.map(movie => (
-          <div key={movie.id} className="col-md-4">
-            <Movie movie={movie} />
-          </div>
+          <Movie key={movie.id} movie={movie} />
         ))}
       </div>
     );
