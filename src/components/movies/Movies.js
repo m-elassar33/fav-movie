@@ -5,8 +5,24 @@ import PropTypes from 'prop-types';
 import { getMovies } from '../../actions/movieActions';
 
 class Movies extends Component {
+  state = {
+    page: 1
+  };
+
+  onScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      this.props.getMovies(this.state.page);
+      this.setState({ page: this.state.page + 1 });
+    }
+  };
+
   componentDidMount() {
-    this.props.getMovies();
+    this.props.getMovies(this.state.page);
+    this.setState({ page: this.state.page + 1 });
+    window.addEventListener('scroll', this.onScroll, false);
   }
 
   render() {
