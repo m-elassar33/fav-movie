@@ -18,6 +18,7 @@ class MovieDetails extends Component {
   closeModal = () => {
     this.setState({ modalIsOpen: false });
     this.props.setModal(false);
+    this.props.history.push(`/`);
   };
 
   componentWillReceiveProps(nextProps, nextState) {
@@ -39,7 +40,8 @@ class MovieDetails extends Component {
       release_date,
       overview,
       runtime,
-      original_language
+      tagline,
+      genres
     } = this.props.movie;
 
     return (
@@ -49,45 +51,75 @@ class MovieDetails extends Component {
           onRequestClose={this.closeModal}
           contentLabel={title}
         >
-          <div className="card">
-            <div className="row">
-              <div className="col-md-5">
+          <div className="row">
+            <div className="col-md-4">
+              <div className="thumbnail">
                 <img
-                  className="card-img-top"
+                  className="img-responsive"
                   src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
                   alt={title}
                 />
               </div>
-              <div className="col-md-7">
-                <div className="card-body">
-                  <h5 className="card-title">{title}</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">
-                    {release_date}
-                  </h6>
-                  <p className="card-text">{overview}</p>
-                </div>
+            </div>
+            <div className="col-md-8">
+              <div>
+                <h2>{`${title} (${new Date(release_date).getFullYear()})`}</h2>
+                <p>
+                  {genres
+                    ? genres.map((genre, i, arr) => (
+                        <span>
+                          {genre.name}
+                          {i !== arr.length - 1 ? ', ' : ''}
+                        </span>
+                      ))
+                    : null}
+                </p>
+              </div>
+              <div>
+                <h4>Overview</h4>
+                <p>{overview}</p>
               </div>
             </div>
           </div>
         </Modal>
         <div className="row">
-          <h4>{`${title} (${new Date(release_date).getFullYear()})`}</h4>
-        </div>
-        <div className="row">
           <div className="col-md-4">
-            <img
-              className="img-fluid"
-              src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
-              alt={title}
-            />
+            <div className="thumbnail">
+              <img
+                className="img-responsive"
+                src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
+                alt={title}
+              />
+            </div>
           </div>
           <div className="col-md-8">
-            <p>Runtime: {runtime} minutes</p>
-            <p>Language: {original_language}</p>
+            <div>
+              <h2>{`${title} (${new Date(release_date).getFullYear()})`}</h2>
+              <p>
+                {genres
+                  ? genres.map((genre, i, arr) => (
+                      <span>
+                        {genre.name}
+                        {i !== arr.length - 1 ? ', ' : ''}
+                      </span>
+                    ))
+                  : null}
+                <span>
+                  <span className="text-muted"> | </span>
+                  {runtime} minutes
+                </span>
+              </p>
+            </div>
+            {tagline ? (
+              <div>
+                <p>{tagline}</p>
+              </div>
+            ) : null}
+            <div>
+              <h4>Overview</h4>
+              <p>{overview}</p>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <p>{overview}</p>
         </div>
       </React.Fragment>
     );

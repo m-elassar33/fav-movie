@@ -1,8 +1,17 @@
+.thumbnail img {
+  width: 100%;
+}
+
 .navbar-dark .navbar-brand {
   color: #0b0;
+  font-style: italic;
 }
 
 .navbar-dark .navbar-brand:hover {
+  color: #0b0;
+}
+
+.navbar-dark .navbar-brand:visited {
   color: #0b0;
 }
 
@@ -44,7 +53,7 @@
   font-weight: 600;
 }
 
-#root {
+body {
   background-color: #eee;
 }
 
