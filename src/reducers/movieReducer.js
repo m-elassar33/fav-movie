@@ -16,8 +16,8 @@ export default function(state = initialState, action) {
     case GET_MOVIES:
       return {
         ...state,
-        movies: action.payload,
-        displayedMovies: action.payload
+        movies: [...state.movies, ...action.payload],
+        displayedMovies: [...state.displayedMovies, ...action.payload]
       };
     case GET_MOVIE:
       return {
