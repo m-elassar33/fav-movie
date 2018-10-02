@@ -1,11 +1,12 @@
 import { GET_MOVIES, GET_MOVIE, FILTER_MOVIES, SET_MODAL } from './types';
 import axios from 'axios';
 
-export const getMovies = () => async dispatch => {
+export const getMovies = page => async dispatch => {
   const res = await axios.get('https://api.themoviedb.org/3/movie/popular', {
     params: {
       api_key: 'bbce44df3ab7afa8c2f1f2f6fe93b640',
-      region: 'US'
+      region: 'US',
+      page
     }
   });
   dispatch({
