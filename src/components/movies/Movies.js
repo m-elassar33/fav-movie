@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
+import Waypoint from 'react-waypoint';
 import Movie from './Movie';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getMovies } from '../../actions/movieActions';
+import { getMovies, clearMovies } from '../../actions/movieActions';
 
 class Movies extends Component {
-  state = {
-    page: 1
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1
+    };
+  }
 
-  onScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      this.props.getMovies(this.state.page);
-      this.setState({ page: this.state.page + 1 });
-    }
+  loadMovies = () => {
+    this.props.getMovies(this.state.page);
+    this.setState({ page: this.state.page + 1 });
   };
 
   componentDidMount() {
-    this.props.getMovies(this.state.page);
-    this.setState({ page: this.state.page + 1 });
-    window.addEventListener('scroll', this.onScroll, false);
+    this.loadMovies();
+  }
+
+  componentWillUnmount() {
+    this.props.clearMovies();
   }
 
   render() {
@@ -33,6 +34,7 @@ class Movies extends Component {
         {movies.map(movie => (
           <Movie key={movie.id} movie={movie} />
         ))}
+        <Waypoint onEnter={this.loadMovies} />
       </div>
     );
   }
@@ -40,7 +42,8 @@ class Movies extends Component {
 
 Movies.propTypes = {
   movies: PropTypes.array.isRequired,
-  getMovies: PropTypes.func.isRequired
+  getMovies: PropTypes.func.isRequired,
+  clearMovies: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -49,5 +52,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getMovies }
+  { getMovies, clearMovies }
 )(Movies);

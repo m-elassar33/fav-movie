@@ -2,7 +2,8 @@ import {
   GET_MOVIES,
   GET_MOVIE,
   FILTER_MOVIES,
-  SET_MODAL
+  SET_MODAL,
+  CLEAR_MOVIES
 } from '../actions/types';
 
 const initialState = {
@@ -13,11 +14,17 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case CLEAR_MOVIES:
+      return {
+        ...state,
+        movies: action.payload,
+        displayedMovies: action.payload
+      };
     case GET_MOVIES:
       return {
         ...state,
-        movies: [...state.movies, ...action.payload],
-        displayedMovies: [...state.displayedMovies, ...action.payload]
+        movies: state.movies.concat(action.payload),
+        displayedMovies: state.displayedMovies.concat(action.payload)
       };
     case GET_MOVIE:
       return {
