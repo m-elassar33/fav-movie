@@ -58,18 +58,18 @@ body {
   height: 250px;
 }
 
-::-webkit-input-placeholder {
+.form-inline input::-webkit-input-placeholder {
   font-size: 0.4em;
 }
 
-::-moz-placeholder {
+.form-inline input::-moz-placeholder {
   font-size: 0.4em;
 }
 
-:-ms-input-placeholder {
+.form-inline input:-ms-input-placeholder {
   font-size: 0.4em;
 }
 
-:-moz-placeholder {
+.form-inline input:-moz-placeholder {
   font-size: 0.4em;
 }
