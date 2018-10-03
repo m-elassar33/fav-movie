@@ -23,10 +23,6 @@
   margin: 15px 0;
 }
 
-.navbar-left {
-  width: 30%;
-}
-
 .card-header {
   border: 0;
 }
@@ -60,4 +56,20 @@ body {
 .img-fluid {
   width: 200px;
   height: 250px;
+}
+
+::-webkit-input-placeholder {
+  font-size: 0.4em;
+}
+
+::-moz-placeholder {
+  font-size: 0.4em;
+}
+
+:-ms-input-placeholder {
+  font-size: 0.4em;
+}
+
+:-moz-placeholder {
+  font-size: 0.4em;
 }
