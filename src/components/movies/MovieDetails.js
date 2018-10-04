@@ -72,7 +72,7 @@ class MovieDetails extends Component {
                 <p>
                   {genres
                     ? genres.map((genre, i, arr) => (
-                        <span>
+                        <span key={genre.id}>
                           {genre.name}
                           {i !== arr.length - 1 ? ', ' : ''}
                         </span>
@@ -103,7 +103,7 @@ class MovieDetails extends Component {
               <p>
                 {genres
                   ? genres.map((genre, i, arr) => (
-                      <span>
+                      <span key={genre.id}>
                         {genre.name}
                         {i !== arr.length - 1 ? ', ' : ''}
                       </span>
