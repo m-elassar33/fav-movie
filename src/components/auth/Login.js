@@ -4,13 +4,10 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/authActions';
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
+  state = {
+    username: '',
+    password: ''
+  };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });

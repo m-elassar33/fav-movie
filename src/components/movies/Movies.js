@@ -6,16 +6,8 @@ import PropTypes from 'prop-types';
 import { getMovies, clearMovies } from '../../actions/movieActions';
 
 class Movies extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 1
-    };
-  }
-
-  loadMovies = () => {
-    this.props.getMovies(this.state.page);
-    this.setState({ page: this.state.page + 1 });
+  state = {
+    page: 1
   };
 
   componentDidMount() {
@@ -25,6 +17,11 @@ class Movies extends Component {
   componentWillUnmount() {
     this.props.clearMovies();
   }
+
+  loadMovies = () => {
+    this.props.getMovies(this.state.page);
+    this.setState({ page: this.state.page + 1 });
+  };
 
   render() {
     const { movies } = this.props;

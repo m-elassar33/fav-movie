@@ -11,6 +11,18 @@ class MovieDetails extends Component {
     modalIsOpen: false
   };
 
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.getMovie(id);
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    const { modalIsOpen } = nextProps.movie;
+    this.setState({
+      modalIsOpen
+    });
+  }
+
   openModal = () => {
     this.setState({ modalIsOpen: true });
   };
@@ -20,18 +32,6 @@ class MovieDetails extends Component {
     this.props.setModal(false);
     this.props.history.push(`/`);
   };
-
-  componentWillReceiveProps(nextProps, nextState) {
-    const { modalIsOpen } = nextProps.movie;
-    this.setState({
-      modalIsOpen
-    });
-  }
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.getMovie(id);
-  }
 
   render() {
     const {
