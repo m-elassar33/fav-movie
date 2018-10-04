@@ -73,3 +73,14 @@ body {
 .form-inline input:-moz-placeholder {
   font-size: 0.4em;
 }
+
+@media screen and (max-width: 800px) {
+  .img-fluid {
+    width: 100%;
+    height: auto;
+  }
+  .card-block {
+    padding-bottom: 20px;
+    margin: 0 10px;
+  }
+}
