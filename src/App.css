@@ -55,7 +55,7 @@ body {
 
 .img-fluid {
   width: 200px;
-  height: 250px;
+  height: 100%;
 }
 
 .form-inline input::-webkit-input-placeholder {
@@ -74,7 +74,7 @@ body {
   font-size: 0.4em;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 575px) {
   .img-fluid {
     width: 100%;
     height: auto;
@@ -82,5 +82,21 @@ body {
   .card-block {
     padding-bottom: 20px;
     margin: 0 10px;
+  }
+  .card-container {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 480px) {
+  .img-fluid {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 575px) {
+  .card-container {
+    height: 150px;
   }
 }

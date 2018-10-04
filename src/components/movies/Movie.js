@@ -16,9 +16,12 @@ class Movie extends Component {
     const { id, poster_path, title, release_date, overview } = this.props.movie;
 
     return (
-      <div className="col-md-4 movie" onClick={this.onClick.bind(this, id)}>
-        <div className="card">
-          <div className="row no-gutters">
+      <div
+        className="col-md-4 col-sm-6 movie"
+        onClick={this.onClick.bind(this, id)}
+      >
+        <div className="card h-100">
+          <div className="row no-gutters h-100">
             <div className="col-md-5">
               <img
                 className="img-fluid"
@@ -27,22 +30,24 @@ class Movie extends Component {
               />
             </div>
             <div className="col-md-7 d-flex flex-column justify-content-between">
-              <div className="card-header bg-white">
-                <h5 className="card-title">{title}</h5>
-                <h6 className="card-subtitle text-muted">
-                  {`${new Date(release_date).toLocaleString('en-us', {
-                    month: 'long'
-                  })} ${new Date(release_date).getDate()}, ${new Date(
-                    release_date
-                  ).getFullYear()}`}
-                </h6>
-              </div>
-              <div className="card-block px-2">
-                <p className="card-text text-muted">
-                  {overview.length > 216
-                    ? overview.substring(0, 216) + '...'
-                    : overview}
-                </p>
+              <div className="card-container">
+                <div className="card-header bg-white">
+                  <h5 className="card-title">{title}</h5>
+                  <h6 className="card-subtitle text-muted">
+                    {`${new Date(release_date).toLocaleString('en-us', {
+                      month: 'long'
+                    })} ${new Date(release_date).getDate()}, ${new Date(
+                      release_date
+                    ).getFullYear()}`}
+                  </h6>
+                </div>
+                <div className="card-block px-2">
+                  <p className="card-text text-muted">
+                    {overview.length > 216
+                      ? overview.substring(0, 216) + '...'
+                      : overview}
+                  </p>
+                </div>
               </div>
               <div className="card-footer bg-white">
                 <Link onClick={e => e.stopPropagation()} to={`/${id}`}>
