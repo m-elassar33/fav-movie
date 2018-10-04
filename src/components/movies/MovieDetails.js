@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMovie, setModal } from '../../actions/movieActions';
@@ -43,6 +44,10 @@ class MovieDetails extends Component {
       tagline,
       genres
     } = this.props.movie;
+
+    if (!title) {
+      return <Spinner />;
+    }
 
     return (
       <React.Fragment>
